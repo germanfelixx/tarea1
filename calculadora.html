@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+	<title>CALCULAMELA</title>
+</head>
+<body>
+	
+	<script>
+	
+var funciones=function(G){
+var value1=G.COMBO;	
+if(value1.value==1){
+total="total de la suma: "+(parseInt(document.getElementById("numero1").value)+parseInt(document.getElementById("numero2").value));
+alert(total);}
+else if(value1.value==2){
+total="total de la Resta: "+(parseInt(document.getElementById("numero1").value)-parseInt(document.getElementById("numero2").value));
+alert(total);}
+
+else if(value1.value==3){
+total="total de la Multiplicacion: "+(parseInt(document.getElementById("numero1").value)*parseInt(document.getElementById("numero2").value));
+alert(total);
+}
+else if(value1.value==4){
+total="total de la Division: "+(parseInt(document.getElementById("numero1").value)/parseInt(document.getElementById("numero2").value));
+alert(total);}
+else if(value1.value==5){
+total="El residuo es: "+(parseInt(document.getElementById("numero1").value)%parseInt(document.getElementById("numero2").value));
+alert(total);}
+}
+
+	</script>
+
+
+<form name="ejemplo">
+Numero 1: 
+		<input type="text" id="numero1" name="Numero 1">
+Numero 2:
+		<input type="text" id="numero2" name="Numero 2">
+	<select name="COMBO"> 
+<option value="1">Suma</option>
+<option value="2">Resta</option>
+<option value="3">Multiplicacion</option>
+<option value="4">Division</option>
+<option value="5">Residuo</option>
+
+</select> 
+<input type="button" value="Resultado" onclick="funciones(ejemplo);">
+	</form>
+
+	
+	
+</body>
+</html>
