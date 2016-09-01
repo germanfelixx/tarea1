@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+<meta charset="UTF-8">
+	<title>CALCULADORA</title>
+	<link rel="stylesheet" type="text/css" href="stilo.css" media="all">
+</head>
+<body bgcolor="#A0A0A0">
+	
+	<script>
+	var aux=0;
+	var numero=0;
+	
+
+
+var n9=function(){
+aux=aux+"9";
+document.ejemplo.numero.value=aux;}
+var n8=function(){
+aux=aux+"8";
+document.ejemplo.numero.value=aux;}
+var n7=function(){
+aux=aux+"7";
+document.ejemplo.numero.value=aux;}
+var n6=function(){
+aux=aux+"6";
+document.ejemplo.numero.value=aux;}
+var n5=function(){
+aux=aux+"5";
+document.ejemplo.numero.value=aux;}
+var n4=function(){
+aux=aux+"4";
+document.ejemplo.numero.value=aux;}
+var n3=function(){
+aux=aux+"3";
+document.ejemplo.numero.value=aux;}
+var n2=function(){
+aux=aux+"2";
+document.ejemplo.numero.value=aux;}
+var n1=function(){
+aux=aux+"1";
+document.ejemplo.numero.value=aux;}
+var n0=function(){
+aux=aux+"0";
+document.ejemplo.numero.value=aux;}
+
+var accion1=function(){
+aux=aux+"+";
+document.ejemplo.numero.value=aux;
+}
+var accion2=function(){
+aux=aux+"-";
+document.ejemplo.numero.value=aux;
+}
+var memoria=0;
+var memoria2=function(){
+if (memoria=="") {
+	memoria=document.ejemplo.numero.value;
+	document.ejemplo.numero.value="";
+	aux=0;
+}else{document.ejemplo.numero.value=aux+memoria;
+aux=aux+memoria;
+}
+
+}
+var accion3=function(){
+	numero=document.ejemplo.numero.value;
+	document.ejemplo.numero.value=eval(aux);
+	aux=eval(aux);
+document.getElementById("historia").innerHTML+=numero+"="+aux+"<br/>";
+}
+var accion4=function(){
+aux=aux+"*";
+document.ejemplo.numero.value=aux;
+}
+var accion5=function(){
+aux=aux+"%";
+document.ejemplo.numero.value=aux;
+}
+var accion6=function(){
+aux=aux+"/";
+document.ejemplo.numero.value=aux;
+}
+var p1=function(){
+aux=aux+"(";
+document.ejemplo.numero.value=aux;
+}
+var p2=function(){
+aux=aux+")";
+document.ejemplo.numero.value=aux;
+}
+var accion7=function(){
+	aux="";
+	memoria=0;
+	document.ejemplo.numero.value="";
+	document.getElementById("historia").value="";
+	document.getElementById("historia").innerHTML="<h3>HISTORIAL</h3>";
+}
+var seno=function(){
+
+	document.ejemplo.numero.value=Math.sin(aux);
+	numero=document.ejemplo.numero.value;
+	
+document.getElementById("historia").innerHTML+="seno de: "+aux+"="+numero+"<br/>";
+}
+var coseno=function(){
+	document.ejemplo.numero.value=Math.cos(aux);
+	numero=document.ejemplo.numero.value;
+	
+document.getElementById("historia").innerHTML+="coseno de: "+aux+"="+numero+"<br/>";
+}
+var tangente=function(){
+	document.ejemplo.numero.value=Math.tan(aux);
+	numero=document.ejemplo.numero.value;
+	
+document.getElementById("historia").innerHTML+="tangente de: "+aux+"="+numero+"<br/>";
+}
+
+var letra=function(){
+	var e=document.ejemplo.numero.value;
+	var r=e.substr(-1);
+	var norma=document.ejemplo.mas.style.backgroundColor;
+	if (r=="+") {aux=aux+"+";
+	document.ejemplo.mas.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.mas.style.backgroundColor=norma;}, 500);}
+	if (r=="c") {accion7(ejemplo);
+	document.ejemplo.ce.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.ce.style.backgroundColor=norma;}, 500);}
+	if (r=="-") {aux=aux+"-";
+	document.ejemplo.menos.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.menos.style.backgroundColor=norma;}, 500);}
+	if (r=="*") {aux=aux+"*";
+	document.ejemplo.multiplicar.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.multiplicar.style.backgroundColor=norma;}, 500);}
+	if (r=="/") {aux=aux+"/";
+	document.ejemplo.division.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.division.style.backgroundColor=norma;}, 500);}
+	if (r=="=") {accion3();
+	document.ejemplo.igual.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.igual.style.backgroundColor=norma;}, 500);
+	}
+	if (r=="%") {aux=aux+"%";
+	document.ejemplo.residuo.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.residuo.style.backgroundColor=norma;}, 500);}
+	if (r=="1") {aux=aux+"1";
+	document.ejemplo.uno.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.uno.style.backgroundColor=norma;}, 500);}
+	if (r=="2") {aux=aux+"2";
+	document.ejemplo.dos.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.dos.style.backgroundColor=norma;}, 500);}
+	if (r=="3") {aux=aux+"3";
+	document.ejemplo.tres.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.tres.style.backgroundColor=norma;}, 500);}
+	if (r=="4") {aux=aux+"4";
+	document.ejemplo.cuatro.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.cuatro.style.backgroundColor=norma;}, 500);}
+	if (r=="5") {aux=aux+"5";
+	document.ejemplo.cinco.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.cinco.style.backgroundColor=norma;}, 500);}
+	if (r=="6") {aux=aux+"6";
+	document.ejemplo.seis.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.seis.style.backgroundColor=norma;}, 500);}
+	if (r=="7") {aux=aux+"7";
+	document.ejemplo.siete.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.siete.style.backgroundColor=norma;}, 500);}
+	if (r=="8") {aux=aux+"8";
+	document.ejemplo.ocho.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.ocho.style.backgroundColor=norma;}, 500);}
+	if (r=="9") {aux=aux+"9";
+	document.ejemplo.nueve.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.nueve.style.backgroundColor=norma;}, 500);}
+	if (r=="(") {aux=aux+"(";
+	document.ejemplo.P1.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.P1.style.backgroundColor=norma;}, 500);}
+	if (r==")") {aux=aux+")";
+	document.ejemplo.P2.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.P2.style.backgroundColor=norma;}, 500);}
+	if (r=="0") {aux=aux+"0";
+	document.ejemplo.cero.style.backgroundColor="blue";
+	setTimeout(function() {document.ejemplo.cero.style.backgroundColor=norma;}, 500);}
+}
+function change(color){
+if (event.srcElement.tagName=="INPUT")
+event.srcElement.style.backgroundColor=color
+}
+
+function jumpto(url){
+window.location=url
+}
+
+
+
+
+	</script>
+	
+<form name="ejemplo" align="center" class="texto"><B>CALCULADORA<br>
+
+<input type="text" name="numero" onkeyup="letra(ejemplo)"  ><br><br>
+<input type="button" value="7" onMouseover="change('blue')" onMouseout="change('')"name="siete" class="boton"onclick="n7(ejemplo);">
+<input type="button" value="8" onMouseover="change('blue')" onMouseout="change('')"name="ocho" class="boton"class="boton"onclick="n8(ejemplo);">
+<input type="button" value="9" onMouseover="change('blue')" onMouseout="change('')"name="nueve" class="boton"onclick="n9(ejemplo);"><br>
+<input type="button" value="4" onMouseover="change('blue')" onMouseout="change('')"name="cuatro" class="boton"onclick="n4(ejemplo);">
+<input type="button" value="5" onMouseover="change('blue')" onMouseout="change('')"name="cinco" class="boton"onclick="n5(ejemplo);">
+<input type="button" value="6" onMouseover="change('blue')" onMouseout="change('')"name="seis" class="boton"onclick="n6(ejemplo);"><br>
+<input type="button" value="1" onMouseover="change('blue')" onMouseout="change('')"name="uno" class="boton"onclick="n1(ejemplo);">
+<input type="button" value="2" onMouseover="change('blue')" onMouseout="change('')"name="dos" class="boton"onclick="n2(ejemplo);">
+<input type="button" value="3" onMouseover="change('blue')" onMouseout="change('')"name="tres" class="boton"onclick="n3(ejemplo);"><br>
+<input type="button" value="0" onMouseover="change('blue')" onMouseout="change('')"name="cero" class="boton"onclick="n0(ejemplo);">
+<input type="button" value="+" onMouseover="change('blue')" onMouseout="change('')"name="mas" class="boton"onclick="accion1(ejemplo);">
+<input type="button" value="-" onMouseover="change('blue')" onMouseout="change('')"name="menos" class="boton"onclick="accion2(ejemplo);"><br>
+<input type="button" value="/" onMouseover="change('blue')" onMouseout="change('')"name="division" class="boton"onclick="accion6(ejemplo);">
+<input type="button" value="*" onMouseover="change('blue')" onMouseout="change('')"name="multiplicar" class="boton"onclick="accion4(ejemplo);">
+<input type="button" value="%" onMouseover="change('blue')" onMouseout="change('')"name="residuo" class="boton"onclick="accion5(ejemplo);"><br>
+<input type="button" value="=" onMouseover="change('blue')" onMouseout="change('')"name="igual" class="boton"onclick="accion3(ejemplo);">
+<input type="button" value="C" onMouseover="change('blue')" onMouseout="change('')"name="ce" class="boton"onclick="accion7(ejemplo);">
+<input type="button" value="M" onMouseover="change('blue')" onMouseout="change('')"name="memoria" class="boton"onclick="memoria2(ejemplo);"><br>
+<input type="button" value="seno" onMouseover="change('blue')" onMouseout="change('')" class="boton"onclick="seno(ejemplo);">
+<input type="button" value="coseno" onMouseover="change('blue')" onMouseout="change('')" class="boton"onclick="coseno(ejemplo);">
+<input type="button" value="tangente" onMouseover="change('blue')" onMouseout="change('')" class="boton"onclick="tangente(ejemplo);"><br>
+<div id="historia" class="historia" ><h3>HISTORIAL</h3></div>
+	</form>
+
+	
+	
+</body>
+</html>

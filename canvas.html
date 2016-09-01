@@ -1,0 +1,52 @@
+<!doctype <!DOCTYPE html>
+<html>
+	<head>
+		<title> TABLERO </title>
+	</head>
+	<body>
+		<canvas 
+		id= "Tablero" width="500" height="500">
+		</canvas>
+
+		<script language="javascript">
+			var example = document.getElementById('Tablero');
+			var context = example.getContext('2d');
+			
+			var i=1;
+			var color=true;
+			for(i=1;i<=8;i++)
+			{
+			color=!color;
+			text=i;
+		
+			var j=1;
+			for(j=1;j<=8;j++)
+			{
+				if(color)
+				{
+					context.fillStyle="black";
+					color=false;
+				}
+				else
+				{
+					context.fillStyle="grey";
+					color=true;
+				}
+				context.fillRect(10+i*40,10+j*40,40,40);
+			}
+			}
+
+			var text="Jugador 1";
+			context.font="20px Arial";
+			context.fillText(text, 10, 400);
+			var text2="Jugador 2";
+			context.font="20px Arial";
+			context.fillText(text2, 300, 400);
+			var text3="Insert coin";
+			context.font="40px Arial";
+			context.fillText(text3, 100, 460);
+		</script>
+			
+			
+	</body>
+</html>

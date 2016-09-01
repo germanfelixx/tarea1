@@ -1,0 +1,26 @@
+  .texto {
+    color: #CCFFFF;
+    }
+
+    .boton{
+
+width: 6%;
+border-radius: 5px;
+border: 1px solid #DBE1EB;
+font-size: 18px;
+font-family: Arial, Verdana;
+padding-left: 7px;
+padding-right: 7px;
+padding-top: 5px;
+padding-bottom: 5px;
+border-radius: 4px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+-o-border-radius: 4px;
+background: #4972B5;
+color: #FFFFFF;
+    }
+    .historia{
+background-color: #000
+
+    }
