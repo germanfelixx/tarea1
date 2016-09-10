@@ -24,3 +24,11 @@ color: #FFFFFF;
 background-color: #000
 
     }
+    .ocultardes{
+
+display: none;
+z-index: 2;
+    }
+.fijo{
+	z-index: 0;
+}

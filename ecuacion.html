@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<title>Grafica</title>
+	</head>
+	<body><canvas id="lienzo" width="500" height="500"></canvas>
+				<form name="funcion" class="funcion">
+					<select id="COMBO" class="select">
+						<option value="ecuacion1">y=x^2</option>
+						<option value="ecuacion2">y=2x^2</option>
+						<option value="ecuacion3">y=x^2+2</option>
+					</select>
+					<label>Desde -X: 
+					<input type="text" class="texto2"  name="valor2" id="valor2"  size=2></label>
+					<label>Hasta X: 
+					<input type="text" class="texto2"  name="valor1" id="valor1" size=2></label>		
+					<input type="button" class="button2" id="agarrar" value="Generar" onclick="Calcular()">
+					</form>
+				<div id="tabla"></div>
+				<script type="text/javascript" >
+			var canvas = document.getElementById("lienzo");
+			var lienzo = canvas.getContext("2d");
+			fondo();
+		function fondo()
+		{
+			lienzo.moveTo(200,10);
+			lienzo.lineTo(200,390);
+			lienzo.strokeStyle = "#000";
+			lienzo.stroke();
+			lienzo.moveTo(10,200);
+			lienzo.lineTo(390,200);
+			lienzo.strokeStyle = "#000";
+			lienzo.stroke();
+			lienzo.moveTo(0,0);
+			lienzo.lineTo(0,400);
+			lienzo.strokeStyle = "#000";
+			lienzo.stroke();
+			lienzo.moveTo(400,0);
+			lienzo.lineTo(400,400);
+			lienzo.strokeStyle = "#000";
+			lienzo.stroke();
+			lienzo.stroke();
+			lienzo.moveTo(0,400);
+			lienzo.lineTo(400,400);
+			lienzo.strokeStyle = "#000";
+			lienzo.stroke();
+			lienzo.moveTo(0,0);
+			lienzo.lineTo(400,0);
+			lienzo.strokeStyle = "#000";
+			lienzo.stroke();
+			
+}
+function posicionesx(valor){
+	var posicion = [];
+	var inicio=10;
+	for (var i = -10; i <= 10; i++) {
+		posicion[i] = inicio;
+		inicio += 19;
+	}
+	return posicion[valor];
+}
+function posicionesy(valor){
+	var posicion = [];
+	var inicio=181;
+	for (var i = 1; i <= 10; i++) {
+		posicion[i] = inicio;
+		inicio -= 19;
+	}
+	inicio = 200;
+	for (var i = 0; i >= -10; i--) {
+		posicion[i] = inicio;
+		inicio += 19;
+	}
+	return posicion[valor];
+}
+function Calcular(){
+	lienzo.clearRect(0, 0, lienzo.width, lienzo.height);
+	var valor1 = funcion.valor1.value;
+	var valor2 = funcion.valor2.value;
+	var tablaNva = '<table id="t01"><tr><th>X</th><th>Y</th></tr>';
+	for (var i = valor2; i <= valor1; i++) {
+		if(funcion.COMBO.value == "ecuacion1"){
+			console.log("etra");
+			tablaNva += "<tr><td value="+i+">"+i+"</td><td value="+Math.pow(i,2)+">"+Math.pow(i,2)+"</td></tr>"
+		}else if(funcion.COMBO.value == "ecuacion2"){
+			tablaNva += "<tr><td value="+i+">"+i+"</td><td>"+(Math.pow(i,2)*2)+"</td></tr>"
+		}else if(funcion.COMBO.value == "ecuacion3"){
+			tablaNva += "<tr><td value="+i+">"+i+"</td><td>"+(Math.pow(i,2)+2)+"</td></tr>"
+		}
+	}
+	tablaNva +="</table>";
+	document.getElementById("tabla").innerHTML = tablaNva;
+	agarrarPuntos();
+}
+function agarrarPuntos(){
+	var puntosx = [];
+	var puntosy = [];
+	var x = true;
+	var ix =0, iy = 0;
+	var celdas = Array.prototype.slice.call(document.getElementById("t01").getElementsByTagName("td"));
+	for(var i in celdas){
+		if(!x){
+			puntosy[iy] = celdas[i].innerHTML;
+			x = true;
+			iy++;
+		}else{
+			puntosx[ix] = celdas[i].innerHTML;
+			x = false;
+			ix++;
+		}
+	}
+	crearCurva(puntosx,puntosy);
+}
+function crearCurva(puntosx,puntosy){
+	lienzo.moveTo(posicionesx(puntosx[0]),posicionesy(puntosy[0]));
+	for (i = 0; i < (puntosy.length-2); i++)
+	{
+	  var xc = (posicionesx(puntosx[i]) + posicionesx(puntosx[i + 1])) / 2;
+	  var yc = (posicionesy(puntosy[i]) + posicionesy(puntosy[i + 1])) / 2;
+	  lienzo.quadraticCurveTo(posicionesx(puntosx[i]), posicionesy(puntosy[i]), xc, yc);
+	}
+lienzo.quadraticCurveTo(posicionesx(puntosx[i]), posicionesy(puntosy[i]), posicionesx(puntosx[i+1]),posicionesy(puntosy[i+1]));
+lienzo.stroke();
+}
+
+				</script>
+			</div>
+		
+	</div>
+	</body>
+</html>

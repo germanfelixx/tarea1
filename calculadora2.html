@@ -10,7 +10,90 @@
 	<script>
 	var aux=0;
 	var numero=0;
-	
+	function mostrar(id){
+		if (document.getElementById(id).style.display=='none') {
+document.getElementById(id).style.display='block';}
+else{document.getElementById(id).style.display='none';
+	}
+}
+var varMemoria = "";
+var ultima = "";
+function cadena() {
+	globala=ejemplo.numero.value;
+	var cnumero = ejemplo.numero.value;
+	ultima = cnumero;
+	var calculadoraaa = [],
+	actual = '';
+	for (var i = 0, ch; ch = cnumero.charAt(i); i++) {
+	if ('^*/+-%()'.indexOf(ch) > -1) {
+	  if (actual == '' && ch == '-') {
+		actual = '-';
+	  } else {
+		calculadoraaa.push(parseFloat(actual), ch);
+		actual = '';
+	  }
+	} else {
+	  actual += cnumero.charAt(i);
+	}
+	}
+	if (actual != '') {
+	calculadoraaa.push(parseFloat(actual));
+	}
+	return calculadoraaa;
+}
+
+function total(calc) {
+
+  var operadores = ['^', '*', '/', '+', '-', '%'],
+    operadordefuncion = [
+      function(a, b) {
+			return Math.pow(a, b);        
+      },
+
+      function(a, b) {
+        return a * b
+      },
+
+      function(a, b) {
+        return a / b
+      },
+
+      function(a, b) {
+        return a + b
+      },
+
+      function(a, b) {
+        return a - b
+      },
+      function(a, b) {
+        return a % b
+      },
+	  function(a, b) {
+      },
+	  function(a, b) {
+      },
+    ],
+    newCalc = [],
+    opeactual;
+  for (var i = 0; i < operadores.length; i++) {
+    for (var j = 0; j < calc.length; j++) {
+      if (calc[j] == operadores[i]) {
+        opeactual = operadordefuncion[i];
+      } else if (opeactual) {
+        newCalc[newCalc.length - 1] = opeactual(newCalc[newCalc.length - 1], calc[j]);
+        opeactual = null;
+      } else {
+        newCalc.push(calc[j]);
+      }
+    }
+    calc = newCalc;
+    newCalc = [];
+  }
+  document.ejemplo.numero.value=calc[0];
+  accion3();
+		
+  
+}
 
 
 var n9=function(){
@@ -65,10 +148,11 @@ aux=aux+memoria;
 }
 var accion3=function(){
 	numero=document.ejemplo.numero.value;
-	document.ejemplo.numero.value=eval(aux);
 	aux=eval(aux);
-document.getElementById("historia").innerHTML+=numero+"="+aux+"<br/>";
+document.getElementById("historia").innerHTML+=globala+"="+aux+"<br/>";
+
 }
+var globala=0;
 var accion4=function(){
 aux=aux+"*";
 document.ejemplo.numero.value=aux;
@@ -81,11 +165,11 @@ var accion6=function(){
 aux=aux+"/";
 document.ejemplo.numero.value=aux;
 }
-var p1=function(){
+var pp1=function(){
 aux=aux+"(";
 document.ejemplo.numero.value=aux;
 }
-var p2=function(){
+var pp2=function(){
 aux=aux+")";
 document.ejemplo.numero.value=aux;
 }
@@ -115,6 +199,7 @@ var tangente=function(){
 	
 document.getElementById("historia").innerHTML+="tangente de: "+aux+"="+numero+"<br/>";
 }
+
 
 var letra=function(){
 	var e=document.ejemplo.numero.value;
@@ -190,7 +275,6 @@ window.location=url
 
 
 
-
 	</script>
 	
 <form name="ejemplo" align="center" class="texto"><B>CALCULADORA<br>
@@ -211,13 +295,20 @@ window.location=url
 <input type="button" value="/" onMouseover="change('blue')" onMouseout="change('')"name="division" class="boton"onclick="accion6(ejemplo);">
 <input type="button" value="*" onMouseover="change('blue')" onMouseout="change('')"name="multiplicar" class="boton"onclick="accion4(ejemplo);">
 <input type="button" value="%" onMouseover="change('blue')" onMouseout="change('')"name="residuo" class="boton"onclick="accion5(ejemplo);"><br>
-<input type="button" value="=" onMouseover="change('blue')" onMouseout="change('')"name="igual" class="boton"onclick="accion3(ejemplo);">
+<input type="button" value="=" onMouseover="change('blue')" onMouseout="change('')"name="igual" class="boton"onclick="total(cadena())">
 <input type="button" value="C" onMouseover="change('blue')" onMouseout="change('')"name="ce" class="boton"onclick="accion7(ejemplo);">
 <input type="button" value="M" onMouseover="change('blue')" onMouseout="change('')"name="memoria" class="boton"onclick="memoria2(ejemplo);"><br>
+<input type="button" value="(" onMouseover="change('blue')" onMouseout="change('')" name="P1" class="boton"onclick="pp1(ejemplo);">
+<input type="button" value=")" onMouseover="change('blue')" onMouseout="change('')" name="P2" class="boton"onclick="pp2(ejemplo);">
+
+
 <input type="button" value="seno" onMouseover="change('blue')" onMouseout="change('')" class="boton"onclick="seno(ejemplo);">
 <input type="button" value="coseno" onMouseover="change('blue')" onMouseout="change('')" class="boton"onclick="coseno(ejemplo);">
 <input type="button" value="tangente" onMouseover="change('blue')" onMouseout="change('')" class="boton"onclick="tangente(ejemplo);"><br>
+<a href="calculadora22.html">Tarea 2</a>
+<a title="ir a graficar"  href="ecuacion.html">Tarea 3<img src="grafico.png" width="40" />
 <div id="historia" class="historia" ><h3>HISTORIAL</h3></div>
+<a></a>
 	</form>
 
 	
